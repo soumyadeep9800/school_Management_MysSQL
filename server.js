@@ -50,7 +50,7 @@ app.post('/addSchool', async (req,res)=>{
         if(existing.length > 0){
             return res.status(409).json({error: "School already exists with the same name and address."});
         }
-        
+
         const [result]=await db.execute(
             'INSERT INTO schools (name, address, latitude, longitude) VALUES (?, ?, ?, ?)',
             [name,address,latitude,longitude]
